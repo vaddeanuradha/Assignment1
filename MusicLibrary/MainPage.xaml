@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="MusicLibrary.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MusicLibrary"
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:Windows.Media"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="169*"/>
+            <ColumnDefinition Width="331*"/>
+        </Grid.ColumnDefinitions>
+
+        <MediaPlayerElement x:Name="mediaPlayer"  AreTransportControlsEnabled="True" Grid.ColumnSpan="2" Grid.Column="1"  HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch">
+            
+        <MediaPlayerElement.TransportControls>
+
+                <!--<MediaElement.TransportControls>
+                    <MediaTransportControls IsCompact="True"/>
+                </MediaElement.TransportControls>-->
+                <MediaTransportControls IsCompact="True" IsZoomButtonVisible="True" IsZoomEnabled="True" IsFastForwardButtonVisible="True" IsFastRewindButtonVisible="True" IsEnabled="True" 
+                            IsFastForwardEnabled="True" IsFastRewindEnabled="True" IsStopButtonVisible="True"    IsPlaybackRateButtonVisible="True" IsPlaybackRateEnabled="True">
+                   
+                </MediaTransportControls>
+                <!--<MediaTransportControls Style="{StaticResource myTransportControlsStyle}"/>-->
+            </MediaPlayerElement.TransportControls>
+        </MediaPlayerElement>
+        <ListView x:Name="listview" ItemsSource="{x:Bind MusicList}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="File Name:MusicList " />
+                            <TextBlock Text="{Binding FileName}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Artist:artist " />
+                            <TextBlock Text="{Binding Artist}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Album:album " />
+                            <TextBlock Text="{Binding Album}" />
+                        </StackPanel>
+                       
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Page>
